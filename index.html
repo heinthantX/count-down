@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COUNT DOWN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./config.js"></script>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="h-screen flex flex-col justify-center items-center bg-white">
+      <div class="bg-black flex flex-col p-6 rounded-sm text-slate-100">
+        <h2 class="text-red-500 text-3xl font-semibold mb-7">COUNT DOWN</h2>
+        <div class="flex space-x-2">
+          <div class="text-9xl overflow-hidden border border-slate-500 h-32">
+            <div id="min-ten">
+              <div>0</div>
+            </div>
+          </div>
+          <div class="text-9xl overflow-hidden border border-slate-500 h-32">
+            <div id="min-one">
+              <div>3</div>
+            </div>
+          </div>
+          <span class="text-8xl mt-5">:</span>
+          <div
+            class="text-7xl overflow-hidden border border-slate-500 h-[4.5rem] mt-12"
+          >
+            <div id="sec-ten">
+              <div>0</div>
+            </div>
+          </div>
+          <div
+            class="text-7xl overflow-hidden border border-slate-500 h-[4.5rem] mt-12"
+          >
+            <div id="sec-one">
+              <div>0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-7 space-x-3">
+        <button
+          onclick="startClick()"
+          class="relative inline-block px-4 py-2 font-medium group"
+        >
+          <span
+            class="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"
+          ></span>
+          <span
+            class="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"
+          ></span>
+          <span class="relative text-black text-xl group-hover:text-white"
+            >START</span
+          >
+        </button>
+        <button
+          onclick="stopClick()"
+          class="relative inline-block px-4 py-2 font-medium group"
+        >
+          <span
+            class="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"
+          ></span>
+          <span
+            class="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"
+          ></span>
+          <span class="relative text-black text-xl group-hover:text-white"
+            >STOP</span
+          >
+        </button>
+        <audio
+          id="alarm"
+          class="hidden"
+          controls
+          src="./src/alarm/The Logo.wav"
+        ></audio>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>

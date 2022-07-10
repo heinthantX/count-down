@@ -1,0 +1,92 @@
+let minOne = document.getElementById('min-one');
+let minTen = document.getElementById('min-ten');
+let secOne = document.getElementById('sec-one');
+let secTen = document.getElementById('sec-ten');
+let alarm = document.getElementById('alarm');
+
+let count = 180;
+let intervalId;
+
+let secondOne;
+let secondTen;
+let minuteOne;
+let minuteTen;
+updateText(count);
+
+let secondONE = secondOne === 0 ? 9 : secondTen - 1;
+let secondTEN = secondTen === 0 ? 5 : secondTen - 1;
+let minuteONE = minuteOne === 0 ? 9 : minuteOne - 1;
+// let minuteTEN = minuteTen === 0 ? 9 : minuteTen - 1;
+
+function startClick() {
+  if (intervalId) return;
+  animate(secondONE, secOne, 'animate-sec');
+  animate(secondTEN, secTen, 'animate-sec');
+  animate(minuteONE, minOne, 'animate-min');
+  // animate(minuteTEN, minTen, 'animate-min');
+  intervalId = setInterval(() => {
+    count--;
+    updateVariable(count - 1);
+    animate(secondOne, secOne, 'animate-sec');
+    if (secondTen !== secondTEN) {
+      animate(secondTen, secTen, 'animate-sec');
+      secondTEN = secondTen;
+    }
+    if (minuteOne !== minuteONE) {
+      animate(minuteOne, minOne, 'animate-min');
+      minuteONE = minuteOne;
+    }
+    // if (minuteTen !== minuteTEN) {
+    //   animate(minuteTen, minTen, 'animate-min');
+    //   minuteTEN = minuteTen;
+    // }
+    if (count === 1) {
+      clearInterval(intervalId);
+      intervalId = null;
+      count = 180;
+      alarm.play();
+    }
+  }, 1000);
+}
+
+function stopClick() {
+  clearInterval(intervalId);
+  intervalId = null;
+  count = 180;
+  setTimeout(() => {
+    updateText(count);
+  }, 1000);
+}
+
+function animate(number, container, aniclass) {
+  let nextTime = document.createElement('div');
+  nextTime.innerText = number;
+  container.append(nextTime);
+  container.classList.add(aniclass);
+
+  setTimeout(() => {
+    container.classList.remove(aniclass);
+    container.removeChild(container.firstElementChild);
+  }, 970);
+}
+
+function updateVariable(count) {
+  const minute = Math.floor(count / 60);
+  const second = count % 60;
+
+  secondOne = second % 10;
+  secondTen = Math.floor(second / 10);
+  minuteOne = minute % 10;
+  minuteTen = Math.floor(minute / 10);
+  return [secondOne, secondTen, minuteOne, minuteTen];
+}
+
+function updateText(count) {
+  const [secondOne, secondTen, minuteOne, minuteTen] = updateVariable(count);
+
+  secOne.firstElementChild.innerHTML = secondOne;
+  secTen.firstElementChild.innerHTML = secondTen;
+
+  minOne.firstElementChild.innerHTML = minuteOne;
+  minTen.firstElementChild.innerHTML = minuteTen;
+}
