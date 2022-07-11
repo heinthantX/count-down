@@ -52,7 +52,7 @@ function startClick() {
       count = 180;
       alarm.play();
     }
-    updateText(count + 1); // don't need to update
+    // updateText(count + 1); // don't need to update
   }, 1000);
 }
 
