@@ -19,6 +19,6 @@ The whole template is built with
 
 ### Animation explanation
 
-I use setInterval() to count the time.
+I used setInterval() to count the time.
 
 Just use css animation for rotating clock and add animation and remove the animation after a delay with setTimeout() in every interval.
