@@ -22,3 +22,11 @@ The whole template is built with
 I used setInterval() to count the time.
 
 Just use css animation for rotating clock and add animation and remove the animation after a delay with setTimeout() in every interval.
+
+### Contact
+
+👤 **Hein Thant**
+
+- Github: [GitHub](https://github.com/heinthantX)
+- Twitter: [Twitter](https://twitter.com/HeinThantX_)
+- Linkedin: [Linkedin](https://www.linkedin.com/in/hein-thant-75372b245/)
